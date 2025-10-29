@@ -22,20 +22,21 @@ docker compose down
 ```
 
 ## 開発手順
-1. src/BP/scripts 配下にて TypeScript でコーディング
-2. サーバー起動時に TypeScript から JavaScript にトランスパイルされる
+1. src/ 配下にて TypeScript でコーディング (エントリとして必ず index.ts が必要です)
+2. サーバー起動時に dist_behavior_pack/ 配下にビルドされます
 3. ログを確認してデバッグなど
 
+## ライブラリ・プラグインとして配布する場合
+```bash
+npm run build:lib
+```
+を行うと dist/ 配下にビルドされます
 
-## その他
-- トランスパイル時に BP, RPのmanifest.jsonからUUIDを抜き出して worlds/DevWorld/world_*_packs.json に入れているので意識しなくていいです
-- template/* はベータAPIを有効化したワールドをテンプレートとしておいてます。必要であればコピーして worlds/DevWorld 内に入れて下さい
 
 ## 推奨事項
 - VSCodeで開発する場合 .vscode/extensions.json に記載の拡張機能を入れるとよいです
 
 
-
-
 ## 今後
-- npm でほかプラグインやライブラリを入れてバンドル後のソースでBPとするなど
+- ビヘイビアパックビルド部分を外部パッケージとして出す
+- Keynoteコア作成後、導入する
