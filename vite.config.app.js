@@ -25,6 +25,11 @@ const behaviorPacker = ({
         emptyOutDir: true,
         assetsDir: '',
         rollupOptions: {
+          external: [
+            '@minecraft/server',
+            '@minecraft/server-net',
+            '@minecraft/server-ui',
+          ],
           input: {
             index: resolve(__dirname, './src/index.ts'),
           },
