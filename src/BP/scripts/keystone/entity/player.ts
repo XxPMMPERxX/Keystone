@@ -10,9 +10,23 @@ export class PlayerRegistry {
    * @param {Player} player
    * @returns {WrappedPlayer}
    */
-  static get(player: Player): WrappedPlayer {
-    if (!_Player._players.has(player.id)) _Player.hello(player);
+  static fromPlayer(player: Player): WrappedPlayer {
+    if (!_Player._players.has(player.id)) {
+      throw new Error(`Player whose id is ${player.id} have not registered yet!`);
+    };
     return _Player._players.get(player.id) as WrappedPlayer;
+  }
+
+  /**
+   * 取得
+   * @param {string} playerId
+   * @returns {WrappedPlayer}
+   */
+  static fromId(playerId: string): WrappedPlayer {
+    if (!_Player._players.has(playerId)) {
+      throw new Error(`Player whose id is ${playerId} have not registered yet!`);
+    };
+    return _Player._players.get(playerId) as WrappedPlayer;
   }
 }
 
@@ -51,3 +65,4 @@ world.afterEvents.playerSpawn.subscribe((event: PlayerSpawnAfterEvent) => {
 world.afterEvents.playerLeave.subscribe((event: PlayerLeaveAfterEvent) => {
   _Player.bye(event.playerId);
 });
+
