@@ -14,6 +14,9 @@ export default defineConfig({
     rollupOptions: {
       external: [
         'keystone',
+        '@minecraft/server',
+        '@minecraft/server-net',
+        '@minecraft/server-ui',
       ],
     }
   },
