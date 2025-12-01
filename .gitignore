@@ -6,4 +6,5 @@ node_modules/
 .env
 resource_packs/
 src/**/*.js
+src/**/*.ts
 dist*
