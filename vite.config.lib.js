@@ -13,7 +13,7 @@ export default defineConfig({
     },
     rollupOptions: {
       external: [
-        '@gollilla/keystone',
+        'keystonemc',
         '@minecraft/server',
         '@minecraft/server-net',
         '@minecraft/server-ui',
