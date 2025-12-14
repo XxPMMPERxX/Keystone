@@ -1,3 +1,3 @@
-import * as keystone from 'keystone';
+import * as keystone from 'keystonemc';
 
 console.log(keystone);
