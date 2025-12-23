@@ -230,6 +230,7 @@ EventManager.registerAfter('playerSpawn', {
 ```ts
 import { EventManager, Priority, sleep } from 'keystonemc';
 
+EventManager.initialize();
 // 参加時のタイトルアニメーション
 EventManager.registerAfter('playerSpawn', {
   async handler(event) {
@@ -274,7 +275,8 @@ EventManager.registerAfter('playerSpawn', {
 ```ts
 import { Player } from '@minecraft/server';
 import { EventManager, sleep } from 'keystonemc';
-  
+
+EventManager.initialize();
 // ボタンを押したときに何のボタンかをカウントダウン後に送信
 EventManager.registerAfter('buttonPush', {
   async handler(event) {
