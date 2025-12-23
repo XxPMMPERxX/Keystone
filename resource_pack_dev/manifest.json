@@ -4,7 +4,8 @@
     "name": "my first resource",
     "description": "",
     "uuid": "998cf2b8-b6d4-4f1f-bffd-a4fd2335dd9d",
-    "version": [1, 0, 0]
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 130]
   },
   "modules": [
     {
