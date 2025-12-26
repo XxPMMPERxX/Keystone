@@ -388,10 +388,11 @@ createMessageForm({
   }
 }).send(player); // 送信
 ```
+<br />
 
 ### フォームの利用例
 
-<iframe width="1430" height="751" src="https://www.youtube.com/embed/Ucp8uMzSm8c" title="Keystone Form Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[デモ動画](https://www.youtube.com/watch?v=Ucp8uMzSm8c)
 
 <details>
 
