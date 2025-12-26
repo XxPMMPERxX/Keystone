@@ -55,6 +55,23 @@ npm run build:lib
 を行うと dist/ 配下にビルドされます  
 <br />
 
+## ライブラリ・プラグインを入れたい場合
+1. インストール
+```bash
+npm install -f <入れたいkeystoneライブラリのリポジトリURL>
+# 例
+# npm install -f git@github.com:XxPMMPERxX/MassBreak.git
+```
+2. インポート
+```ts
+// src/index.ts
+
+import '<入れたいライブラリ名>';
+// 例
+// import '@gollilla/massbreak';
+```
+
+
 ## 推奨事項
 - VSCodeで開発する場合 .vscode/extensions.json に記載の拡張機能を入れるとよいです
 <br />
