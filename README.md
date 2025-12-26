@@ -17,6 +17,7 @@ JavaScriptの暗黙の型変換によるエラーで悩んでしまう時間を�
 - ⏰ 豊富なタイマーで幅広い処理をスタイリッシュに！
 - 🛠️ スリープ処理や条件待機処理で上から下への処理記法を実現し、if地獄から脱却！
 - 🔢 拡張されたAABBクラスやVector3クラスで複雑な計算を簡単に！
+- 📃 ボタンやコンポーネント毎に処理を置ける感覚的なフォームビルダーを提供
 
 <br />  
 
@@ -66,3 +67,8 @@ npm run build:lib
   - [遅延処理サンプル](./DOCUMENT.md#遅延処理サンプル)
   - [条件待機処理サンプル](./DOCUMENT.md#条件待機処理サンプル)
   - [スリープ処理サンプル](./DOCUMENT.md#スリープ処理サンプル)
+- [フォーム](./DOCUMENT.md#フォーム)
+  - [ActionForm](./DOCUMENT.md#ActionForm)
+  - [ModalForm](./DOCUMENT.md#ModalForm)
+  - [MessageForm](./DOCUMENT.md#MessageForm)
+  - [サンプル](./DOCUMENT.md#フォームの利用例)
