@@ -301,6 +301,8 @@ EventManager.registerAfter('buttonPush', {
 ## フォーム
 ### ActionForm
 ```ts
+import { createActionForm, button } from 'keystonemc';
+
 createActionForm({
   title: '', // タイトル
   body: '', // 枠内の文字
@@ -321,6 +323,8 @@ createActionForm({
 
 ### ModalForm
 ```ts
+import { createModalForm, toggle, textField, dropdown, slider } from 'keystonemc';
+
 createModalForm({
   title: '', // タイトル
   previousForm: undefined, // ひとつ前のフォーム (xや[ESC]入力で遷移) (省略可)
@@ -370,6 +374,8 @@ createModalForm({
 
 ### MessageForm
 ```ts
+import { createMessageForm } from 'keystonemc';
+
 createMessageForm({
   title: '', // タイトル
   previousForm: undefined, // ひとつ前のフォーム (xや[ESC]入力で遷移) (省略可)
