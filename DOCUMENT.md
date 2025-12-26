@@ -295,3 +295,219 @@ EventManager.registerAfter('buttonPush', {
 ```
 
 </details>
+
+<br />
+
+## フォーム
+### ActionForm
+```ts
+createActionForm({
+  title: '', // タイトル
+  body: '', // 枠内の文字
+  previousForm: undefined, // ひとつ前のフォーム (xや[ESC]入力で遷移) (省略可)
+  buttons: [　// ここからボタン
+    button({
+      text: '', // ボタンの文字
+      iconPath: '',　// アイコンのパス (例: textures/ui/icon_apple) (省略可)
+      handler(player) {
+        // ボタンを押したときの処理
+      }
+    }),
+    // ... いっぱい入れれる
+  ]
+}).send(player); // 送信
+```
+<br />
+
+### ModalForm
+```ts
+createModalForm({
+  title: '', // タイトル
+  previousForm: undefined, // ひとつ前のフォーム (xや[ESC]入力で遷移) (省略可)
+  components: [ // ここからコンポーネント
+    toggle({ // オンオフのトグル
+      label: '', // トグルの右側の文字
+      default: false, // デフォルトでオンオフどちらか
+      handler(player, value) { 
+        // サブミット後の処理
+        // valueはboolean
+      }
+    }),
+    textField({
+      label: '', // テキストフィールドの上の文字
+      placeholder: '', // 空白にした時薄く表示される文字 (省略可)
+      default: '', // デフォルトで書かれてる文字 (省略可)
+      handler(player, value) {
+        // サブミット後の処理
+        // valueはstring
+      }
+    }),
+    dropdown({
+      label: '', // ドロップダウンの上の文字
+      options: [], // string[]。handlerで使うので、あらかじめ配列を宣言しておくべき
+      defaultIndex: 0, // デフォルトで選択する配列のインデックス
+      handler(player, value) {
+        // サブミット後の処理
+        // valueはnumber
+        // あらかじめ宣言しておいた配列からデータの文字列をとる (例: opts[value])
+      }
+    }),
+    slider({
+      label: '', // スライダーの上の文字
+      min: 1, // 最小値
+      max: 8, // 最大値
+      step: 1, // 刻みの数値 (デフォルトで1なので省略可)
+      default: 1, // デフォルトの数値
+      handler(player, value) {
+        // サブミット後の処理
+        // valueはnumber
+      }
+    })
+  ]
+}).send(player); // 送信
+```
+<br />
+
+### MessageForm
+```ts
+createMessageForm({
+  title: '', // タイトル
+  previousForm: undefined, // ひとつ前のフォーム (xや[ESC]入力で遷移) (省略可)
+  body: '', // 本文
+  yes: { // 上のボタン
+    text: '', // ボタンの文字
+    handler(player) {
+      // サブミット後の処理
+    }
+  },
+  no: { // 下のボタン
+    text: '', // ボタンの文字
+    handler(player) {
+      // サブミット後の処理
+    }
+  }
+}).send(player); // 送信
+```
+
+### フォームの利用例
+
+<iframe width="1430" height="751" src="https://www.youtube.com/embed/Ucp8uMzSm8c" title="Keystone Form Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<details>
+
+<summary>コード</summary>
+
+```ts
+import { EventManager, createActionForm, createMessageForm, createModalForm, button, dropdown, slider, textField, toggle } from 'keystonemc';
+
+EventManager.registerAfter('itemUse', {
+  handler(event) {
+    if (event.itemStack.typeId !== 'minecraft:nether_star') return;
+
+    getHome().send(event.source);
+  }
+});
+
+function getHome() {
+  return createActionForm({
+    title: 'ActionForm',
+    body: 'テキスト',
+    buttons: [
+      button({
+        text: 'リンゴについて',
+        iconPath: 'textures/ui/icon_apple',
+        handler(player) {
+          getApple().send(player);
+        }
+      }),
+      button({
+        text: 'ケーキについて',
+        iconPath: 'textures/ui/icon_cake',
+        handler(player) {
+          getCake().send(player);
+        }
+      }),
+      button({
+        text: 'クッキーについて',
+        iconPath: 'textures/ui/icon_cookie',
+        handler(player) {
+          getCookie().send(player);
+        }
+      }),
+    ]
+  });
+}
+
+function getApple() {
+  return createModalForm({
+    title: 'リンゴについて聞かせてね',
+    previousForm: getHome(),
+    components: [
+      toggle({
+        label: 'リンゴは好きかい？',
+        default: false,
+        handler(player, value) {
+          player.sendMessage(`ほう。${value ? '好き' : '嫌い'}なんだね`);
+        }
+      }),
+      textField({
+        label: 'なんでかおしえてよ',
+        placeholder: '空白は許さないよ',
+        default: '消して理由を書いておくれ',
+        handler(player, value) {
+          player.sendMessage(`「${String(value)}」 ...。へぇ..`);
+        }
+      })
+    ]
+  });
+}
+
+function getCake() {
+  const opts = [ 'チョコレートケーキ', 'ショートケーキ', 'モンブラン', 'チーズケーキ' ];
+  return createModalForm({
+    title: 'ケーキについて聞かせてね',
+    previousForm: getHome(),
+    components: [
+      dropdown({
+        label: '好きなケーキは？',
+        options: opts,
+        defaultIndex: 0,
+        handler(player, value) {
+          player.sendMessage(`へぇ、君は${opts[value]}が好きなんだね`);
+        }
+      }),
+      slider({
+        label: '一回に何切くらい食べれる？',
+        min: 1,
+        max: 8,
+        default: 1,
+        handler(player, value) {
+          player.sendMessage(`そんでもって、一度に${String(value)}切食べれるんだね～`);
+        }
+      })
+    ]
+  });
+}
+
+function getCookie() {
+  return createMessageForm({
+    title: 'クッキーについて二択で質問するよ',
+    previousForm: getHome(),
+    body: 'ボクが君に高級なクッキーを買ってあげるよりも、恋人や友人からもらえるごく普通のバタークッキーの方が味も全て好きだって言うのかい？',
+    yes: {
+      text: '当然さ',
+      handler(player) {
+        player.sendMessage('ふん！');
+      }
+    },
+    no: {
+      text: '君からもらいたい',
+      handler(player) {
+          player.sendMessage('えへへ...');
+      }
+    }
+  });
+}
+```
+
+</details>
