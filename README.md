@@ -42,9 +42,10 @@ docker compose down
 <br />
 
 ## 開発手順
-1. src/ 配下にて TypeScript でコーディング (エントリとして必ず index.ts が必要です)
-2. サーバー起動時に dist_behavior_pack/ 配下にビルドされます
-3. ログを確認してデバッグなど
+1. package.json の `name` をあなたのプロジェクト名に変更
+2. src/ 配下にて TypeScript でコーディング (エントリとして必ず index.ts が必要です)
+3. サーバー起動時に dist_behavior_pack/ 配下にビルドされます
+4. ログを確認してデバッグなど
 <br />
 
 ## ライブラリ・プラグインとして配布する場合
