@@ -39,6 +39,11 @@ docker compose logs bds -f
 ```bash
 docker compose down
 ```
+
+OR
+```bash
+ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/XxPMMPERxX/KeystoneCore/refs/heads/main/keystone-install.sh)"
+```
 <br />
 
 ## 開発手順
