@@ -35,6 +35,8 @@ services:
     user: "${UID:-1000}:${GID:-1000}"
     volumes:
       - ".:/app"
+    tmpfs:
+      - /tmp
     entrypoint: sh -c "npm install --force && npm run build:app"
     environment:
       - NODE_ENV=development
