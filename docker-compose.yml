@@ -37,6 +37,7 @@ services:
     entrypoint: sh -c "npm install --force && npm run build:app"
     environment:
       - NODE_ENV=development
+      - NPM_CONFIG_CACHE=/tmp/.npm
   
   # To Dev core
   # dev:
