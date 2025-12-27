@@ -1,3 +1,3 @@
-import * as keystone from 'keystonemc';
+import { debug } from 'keystonemc';
 
-console.log(keystone);
+debug('Hellow, World!');
