@@ -37,17 +37,7 @@ services:
       - ".:/app"
     tmpfs:
       - /tmp
-    entrypoint: sh -c "npm install --force && npm run build:app"
+    entrypoint: sh -c "npm install && npm run build:app"
     environment:
       - NODE_ENV=development
       - NPM_CONFIG_CACHE=/tmp/.npm
-  
-  # To Dev core
-  # dev:
-  #   image: node:20.10-alpine
-  #   working_dir: /workspace/dev
-  #   volumes:
-  #     - "..:/workspace"
-  #   entrypoint: sh -c "cd /workspace/dev && npm install --force && npm run build:app"
-  #   environment:
-  #     - NODE_ENV=development
