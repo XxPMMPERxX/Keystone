@@ -63,9 +63,9 @@ npm run build:lib
 ## ライブラリ・プラグインを入れたい場合
 1. インストール
 ```bash
-npm install -f <入れたいkeystoneライブラリのリポジトリURL>
+npm install <入れたいkeystoneライブラリのリポジトリURL>
 # 例
-# npm install -f git@github.com:XxPMMPERxX/MassBreak.git
+# npm install git@github.com:XxPMMPERxX/MassBreak.git
 ```
 2. インポート
 ```ts
