@@ -319,6 +319,23 @@ createActionForm({
   ]
 }).send(player); // 送信
 ```
+or
+```tsx
+import { ActionForm as ActionFormType, debug } from 'keystonemc';
+import { ActionForm, Button } from 'keystonemc/form/component';
+
+const Home = (): ActionFormType => {
+  return <ActionForm
+    title="テスト"
+  >
+    <Button onClick={(player) => debug(player.name)}>
+      test
+    </Button>
+  </ActionForm>;
+};
+
+// Home().send(player);
+```
 <br />
 
 ### ModalForm
@@ -369,6 +386,41 @@ createModalForm({
     })
   ]
 }).send(player); // 送信
+```
+or
+```tsx
+import { ActionForm as ActionFormType, debug } from 'keystonemc';
+import { Dropdown, ModalForm, Slider, Textfield, Toggle } from 'keystonemc/form/component';
+
+const Home = (): ActionFormType => {
+  return <ModalForm
+    title="テスト"
+    onSubmit={(player) => debug(debug)}
+  >
+    <Toggle
+      label="テストトグル"
+      defaultValue={false}
+    />
+    <Slider
+      label="テストスライダー"
+      min={0}
+      max={10}
+      step={1}
+      defaultValue={5}
+    />
+    <Textfield
+      label="テストテキストフィールド"
+      placeholder="テキスト"
+    />
+    <Dropdown
+      label="テストどろっぴダウン"
+      options={['test1', 'test2']}
+      defaultValueIndex={0}
+    />
+  </ModalForm>;
+};
+
+// Home().send(player);
 ```
 <br />
 
