@@ -30,7 +30,7 @@ services:
       dev:
         condition: service_completed_successfully
   dev:
-    image: node:20.10-alpine
+    image: node:23.11.1-alpine
     working_dir: /app
     user: "${UID:-1000}:${GID:-1000}"
     volumes:

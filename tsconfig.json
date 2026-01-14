@@ -3,6 +3,7 @@
     "target": "es6",
     "moduleResolution": "Node",
     "module": "ES2020",
+    "jsx": "preserve",
     "declaration": false,
     "noLib": false,
     "emitDecoratorMetadata": true,
