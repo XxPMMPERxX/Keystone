@@ -8,6 +8,11 @@ export default defineConfig({
     dts(),
     supportJsx(),
   ],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src')
+    }
+  },
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
