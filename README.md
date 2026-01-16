@@ -47,6 +47,7 @@ OR
 <br />
 
 ## 開発手順
+https://ortcraft.site/blogs/3
 1. package.json の `name` をあなたのプロジェクト名に変更
 2. src/ 配下にて TypeScript でコーディング (エントリとして必ず index.ts が必要です)
 3. サーバー起動時に dist/behavior_pack/ 配下にビルドされます
