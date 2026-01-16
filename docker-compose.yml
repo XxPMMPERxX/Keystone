@@ -7,7 +7,7 @@ services:
       - "${SCRIPT_DEBUGGER_PORT:-19144}:19144"
       - "${SCRIPT_DEBUGGER_PORT:-19144}:19144/udp"
     volumes:
-      - "./dist_behavior_pack:/data/behavior_packs/BP"
+      - "./dist/behavior_pack:/data/behavior_packs/BP"
       - "./resource_pack_dev:/data/resource_packs/RP"
       - "./worlds:/data/worlds"
       - "./config:/data/config"
